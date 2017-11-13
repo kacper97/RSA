@@ -21,13 +21,16 @@ public class RSAKeyPairGen
       FileOutputStream privateKeyFOS = new FileOutputStream("RSAPrivateKeyFile");
       ObjectOutputStream privateKeyOOS = new ObjectOutputStream(privateKeyFOS);
 
-      // File for writing publickey
+      // File for writing public key
       FileOutputStream publicKeyFOS = new FileOutputStream("RSAPublicKeyFile");
-      ObjectOutputStream publicKeyOOS = new ObjectOutputStream(publicKeyFOS);
-
+     // *CHANGE* >>> REMOVED THE OUTPUT 
+     
       // Write the keys to respective files
       privateKeyOOS.writeObject(keyPair.getPrivate());
-      publicKeyOOS.writeObject(keyPair.getPublic());
+      publicKeyFOS.write(keyPair.getPublic().getEncoded());
+      
+   // *CHANGE* >>> PRINTS FORMAT AND  ALGORITHM OF PUBLIC KEY <<< 
+  	System.out.println( String.format("Key format: %s, Algorithm: %s", keyPair.getPublic().getFormat(),keyPair.getPublic().getAlgorithm()));
 
     }
     catch (Exception e)
