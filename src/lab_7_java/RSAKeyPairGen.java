@@ -23,13 +23,14 @@ public class RSAKeyPairGen
 
       // File for writing public key
       FileOutputStream publicKeyFOS = new FileOutputStream("RSAPublicKeyFile");
-     // *CHANGE* >>> REMOVED THE OUTPUT 
+     // *CHANGE* >>> REMOVED THE OUTPUT AS THIS SHOWED UP ERRORS IN OPENSSL
      
       // Write the keys to respective files
       privateKeyOOS.writeObject(keyPair.getPrivate());
+      // *CHANGE* >>> GET.ENCODED ADDED (Returns the key in its primary encoding format, or null if this key does not support encoding)
       publicKeyFOS.write(keyPair.getPublic().getEncoded());
       
-   // *CHANGE* >>> PRINTS FORMAT AND  ALGORITHM OF PUBLIC KEY <<< 
+   // *CHANGE* >>> PRINTS FORMAT AND  ALGORITHM OF PUBLIC KEY JUST TO CLARIFY WRITE IS WORKING <<< 
   	System.out.println( String.format("Key format: %s, Algorithm: %s", keyPair.getPublic().getFormat(),keyPair.getPublic().getAlgorithm()));
 
     }
